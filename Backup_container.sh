@@ -1,6 +1,6 @@
 #! /bin/bash
 
-mkdir -p /root/containers
+`mkdir -p /root/containers`
 
 CONTAINER=/root/containers
 
