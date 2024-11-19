@@ -12,8 +12,9 @@ CONTAINER=/root/containers
 
 for line in $(cat /root/containers/containers_running.txt);do
 
-        docker commit $line $line:backup
-        docker save $line:backup -o $IMAGE/$line.tar
+        docker commit $line $line:backup_`date +%Y-%m-%d`
+        docker save $line:backup_`date +%Y-%m-%d` -o $IMAGE/$line_`date +%Y-%m-%d_%H:%M:%S`.tar
+#	docker image prune
 
         if [ $? = 0 ]; then
 
@@ -24,3 +25,6 @@ for line in $(cat /root/containers/containers_running.txt);do
 
         fi
 done
+
+docker image prune -f
+
